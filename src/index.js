@@ -10,10 +10,7 @@ app.listen(3000, async () => {
      const tweetRepo = new TweetRepository();
     //  const tweet = await tweetRepo.get('6641fae2f1903914694f82b5');
     //  console.log(tweet);
-     const tweet = await tweetRepo.create({content: 'Tweet with comment schema'});
-     console.log(tweet);
-     const comment = await Comment.create({content: 'new comment'});
-     tweet.comments.push(comment);
-     await tweet.save();
-     console.log(tweet);
+    // 
+       const tweet = await tweetRepo.getAll(1,1);
+       console.log(tweet[0].contentWithEmail);
 });

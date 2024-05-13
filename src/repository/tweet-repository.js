@@ -41,12 +41,21 @@ class TweetRepository {
     }
     async getWithComments(id) {
         try {
-            const tweet = await Tweet.findById(id).popilate({path : 'comments'});
+            const tweet = await Tweet.findById(id).popilate({path : 'comments'}).lean();
             return tweet;
         }
         catch(error) {
             console.log(errror);
         }
+    }
+    async getAll(offset,limit) {
+        try {
+            const tweet = await Tweet.find().skip(offset).limit(limit);
+            return tweet;
+         }
+         catch(error) {
+            console.log(error);
+         }
     }
 
 }
